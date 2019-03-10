@@ -10,13 +10,13 @@ import java.util.Objects;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Team.findAll", query = "select t from Team as t")
+        @NamedQuery(name = "Candidate.findAll", query = "select t from Candidate as t")
 })
-@Table(name = "TEAM")
+@Table(name = "CANDIDATE")
 @Getter @Setter
-public class Team {
+public class Candidate {
 
-    public Team(){
+    public Candidate(){
 
     }
 
@@ -26,15 +26,15 @@ public class Team {
 
     private String name;
 
-    @OneToMany(mappedBy = "team", fetch = FetchType.EAGER)
-    private List<Player> players = new ArrayList<>();
+    @OneToMany(mappedBy = "candidate", fetch = FetchType.EAGER)
+    private List<Interview> interviews = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Team team = (Team) o;
-        return Objects.equals(name, team.name);
+        Candidate candidate = (Candidate) o;
+        return Objects.equals(name, candidate.name);
     }
 
     @Override

@@ -6,15 +6,15 @@
 >
 <h:head/>
 <h:body>
-    <h2>Teams:</h2>
+    <h2>Candidates</h2>
     <ol>
-        <ui:repeat value="#{teams.allTeams}" var="team">
-            <li><h:link value="#{team.name}" outcome="players?teamId=#{team.id}" /></li>
+        <ui:repeat value="#{candidates.allCandidates}" var="candidate">
+            <li><h:link value="#{candidate.name}" outcome="interviews?candidateId=#{candidate.id}" /></li>
         </ui:repeat>
     </ol>
     <h:form>
-        <h:inputText value="#{teams.teamToCreate.name}" required="true" />
-        <h:commandButton value="Add new team" action="#{teams.createTeam}" />
+        <h:inputText value="#{candidates.candidateToCreate.name}" required="true" />
+        <h:commandButton value="Add new candidate" action="#{candidates.createCandidate}" />
     </h:form>
 </h:body>
 </html>

@@ -1,18 +1,17 @@
 package vu.lt.persistence;
 
-import vu.lt.entities.Player;
+import vu.lt.entities.Interview;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.List;
 
 @ApplicationScoped
-public class PlayersDAO {
+public class InterviewsDAO {
     @PersistenceContext
     private EntityManager em;
 
-    public void persist(Player player){
-        this.em.persist(player);
+    public void persist(Interview interview){
+        this.em.persist(interview);
     }
 }
