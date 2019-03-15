@@ -7,7 +7,7 @@
       xmlns:f="http://java.sun.com/jsf/core">
 <h:head/>
 <h:body>
-    <h2>Players playing in #{interviewsForCandidate.candidate.name} candidate:</h2>
+    <h2>Candidate #{interviewsForCandidate.candidate.name} interviews:</h2>
     <ol>
         <ui:repeat value="#{interviewsForCandidate.candidate.interviews}" var="interview">
             <li>#{interview.name}</li>
@@ -15,8 +15,8 @@
     </ol>
     <h:form>
         <h:inputText a:placeholder="name" value="#{interviewsForCandidate.interviewToCreate.name}" required="true" />
-        <h:commandButton value="Add interview to the candidate" action="#{interviewsForCandidate.createPlayer}" >
-            <f:param name="teamId" value="#{interviewsForCandidate.candidate.id}" />
+        <h:commandButton value="Add interview to the candidate" action="#{interviewsForCandidate.createInterview}" >
+            <f:param name="candidateId" value="#{interviewsForCandidate.candidate.id}" />
         </h:commandButton>
     </h:form>
 </h:body>

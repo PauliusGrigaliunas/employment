@@ -6,6 +6,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Map;
 
 import lombok.Getter;
@@ -30,6 +31,9 @@ public class InterviewsForCandidate implements Serializable {
     @Getter @Setter
     private Interview interviewToCreate = new Interview();
 
+    @Getter
+    private List<Interview> allInterview;
+
     @PostConstruct
     public void init() {
         Map<String, String> requestParameters =
@@ -39,9 +43,10 @@ public class InterviewsForCandidate implements Serializable {
     }
 
     @Transactional
-    public String createPlayer() {
+    public String createInterview() {
         interviewToCreate.setCandidate(this.candidate);
         interviewDAO.persist(interviewToCreate);
-        return "/interviews.xhtml?faces-redirect=true&teamId=" + this.candidate.getId();
+        return "interviews?faces-redirect=true&candidateId=" + this.candidate.getId();
     }
+
 }

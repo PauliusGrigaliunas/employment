@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias type="vu.lt.mybatis.model.Candidate" alias="Candidate"/>
+        <typeAlias type="vu.lt.mybatis.model.Interview" alias="Interview"/>
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="MANAGED"/>
+            <dataSource type="JNDI">
+                <property name="data_source" value="openejb:Resource/EmploymentDataSource"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="mybatis.xml/CandidateMapper.xml"/>
+        <mapper resource="mybatis.xml/InterviewMapper.xml"/>
+    </mappers>
+</configuration>
