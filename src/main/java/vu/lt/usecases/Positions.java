@@ -32,9 +32,9 @@ public class Positions {
     }
 
     @Transactional
-    public String createCandidate(){
+    public String createPosition(){
         this.positionsDAO.persist(positionToCreate);
-        return "index?faces-redirect=true";
+        return "positions?faces-redirect=true";
     }
 
     private void loadAllCandidates(){
