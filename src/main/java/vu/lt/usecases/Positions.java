@@ -37,6 +37,8 @@ public class Positions {
         return "positions?faces-redirect=true";
     }
 
+
+
     private void loadAllCandidates(){
         this.allPositions = positionsDAO.loadAll();
     }

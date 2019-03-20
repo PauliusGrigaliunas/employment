@@ -1,6 +1,8 @@
 package vu.lt.persistence;
 
+import vu.lt.entities.Candidate;
 import vu.lt.entities.Position;
+import vu.lt.usecases.Candidates;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
@@ -27,5 +29,11 @@ public class PositionsDAO {
 
     public Position findOne(Integer id) {
         return em.find(Position.class, id);
+    }
+
+     List<Candidate> getQualifiedCandidates(int positionId) {
+        return em.createNamedQuery("Candidate.findById", Candidate.class)
+                .setParameter("candidateId", positionId)
+                .getResultList();
     }
 }

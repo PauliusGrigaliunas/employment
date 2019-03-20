@@ -10,7 +10,8 @@ import java.util.Objects;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Candidate.findAll", query = "select t from Candidate as t")
+        @NamedQuery(name = "Candidate.findAll", query = "select t from Candidate as t"),
+        @NamedQuery(name = "Candidate.findById", query = "select t from Position as t where t.id = :candidateId")
 })
 @Table(name = "CANDIDATE")
 @Getter @Setter
