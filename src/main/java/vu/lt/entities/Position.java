@@ -5,6 +5,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -26,8 +28,8 @@ public class Position {
 
     private String name;
 
-    /*@OneToMany(mappedBy = "position", fetch = FetchType.EAGER)
-    private List<Interview> interviews = new ArrayList<>();*/
+    @ManyToMany(mappedBy = "positionsList")
+    private List<Candidate> candidatesList = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {

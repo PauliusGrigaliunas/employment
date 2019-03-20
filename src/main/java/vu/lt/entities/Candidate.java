@@ -29,6 +29,10 @@ public class Candidate {
     @OneToMany(mappedBy = "candidate", fetch = FetchType.EAGER)
     private List<Interview> interviews = new ArrayList<>();
 
+
+    @ManyToMany
+    private List<Position> positionsList = new ArrayList<>();
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
