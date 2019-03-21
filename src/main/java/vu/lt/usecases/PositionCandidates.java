@@ -31,29 +31,31 @@ public class PositionCandidates {
 
     @PostConstruct
     public void init() {
-        loadCandidateOfposition();
+        loadCandidateOfPosition();
     }
 
-    public void loadCandidateOfposition() {
-        //this.candidatesOfPositions = positionsDAO.getSkillHeroes(this.position.getId());
+    public void loadCandidateOfPosition() {
+        this.candidatesOfPositions = positionsDAO.getQualifiedCandidates(this.position.getId());
     }
 
-    /*@Transactional
-    public void mapHeroToSkill() {
-        Candidate candidate = CandidatesDAO.loadOne(this.candidate.getId());
-        Position position = skillsDAO.loadOne(this.position.getId());
-        position.add(candidate);
-        skillsDAO.merge(position);
+    @Transactional
+    public void mapCandidateToPosition() {
+        Candidate candidate = candidatesDAO.loadOne(this.candidate.getId());
+        Position  position = positionsDAO.loadOne(this.position.getId());
+        candidate.addPosition(position);
+        position.addCandidate(candidate);
+        candidatesDAO.merge(candidate);
+        positionsDAO.merge(position);
     }
 
     @Transactional
     public String createSkillOfHero(){
-        // Hero must use GenerationType.IDENTITY to ensure id starts from 1
+
         if (this.candidate.getId() != 0){
-            Hero hero = heroesDAO.loadOne(this.candidate.getId());
-            this.position.addHero(hero);
+            Candidate candidate = candidatesDAO.loadOne(this.candidate.getId());
+            this.position.addCandidate(candidate);
         }
-        this.skillsDAO.persist(this.position);
+        this.positionsDAO.persist(this.position);
         return "success";
-    }*/
+    }
 }

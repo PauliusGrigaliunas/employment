@@ -19,6 +19,12 @@ public class PositionsDAO {
         return em.createNamedQuery("Position.findAll", Position.class).getResultList();
     }
 
+    public Position loadOne(int positionId) {
+        return em.createNamedQuery("Position.findById", Position.class)
+                .setParameter("positionId", positionId)
+                .getSingleResult();
+    }
+
     public void setEm(EntityManager em) {
         this.em = em;
     }
@@ -31,9 +37,13 @@ public class PositionsDAO {
         return em.find(Position.class, id);
     }
 
-     List<Candidate> getQualifiedCandidates(int positionId) {
+    public List<Candidate> getQualifiedCandidates(int positionId) {
         return em.createNamedQuery("Candidate.findById", Candidate.class)
                 .setParameter("candidateId", positionId)
                 .getResultList();
+    }
+
+    public void merge(Position position) {
+        this.em.merge(position);
     }
 }

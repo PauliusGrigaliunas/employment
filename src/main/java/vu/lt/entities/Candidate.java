@@ -47,4 +47,14 @@ public class Candidate {
 
         return Objects.hash(name);
     }
+
+    public void addPosition(Position position) {
+        positionsList.add(position);
+        position.getCandidatesList().add(this);
+    }
+
+    public void removePosition(Position position) {
+        positionsList.add(position);
+        position.getCandidatesList().add(this);
+    }
 }
