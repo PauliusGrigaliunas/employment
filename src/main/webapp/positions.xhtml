@@ -10,12 +10,13 @@
     <h2>Positions:</h2>
     <ol>
         <ui:repeat value="#{positions.allPositions}" var="position">
-            <li>"#{position.name}"</li>
+            <li>#{position.name}</li>
         </ui:repeat>
     </ol>
     <h:form>
         <h:inputText value="#{positions.positionToCreate.name}" required="true" />
         <h:commandButton value="Add new position" action="#{positions.createPosition}" />
     </h:form>
+    <h:link value="Back" outcome="index?" />
 </h:body>
 </html>
