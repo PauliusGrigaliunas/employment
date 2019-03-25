@@ -33,7 +33,12 @@
     <h:form>
         <h:inputText value="#{positionCandidates.candidate.id}" required="true" />
         <h:inputText value="#{positionCandidates.position.id}" required="true" />
+        <h:commandButton value="Map" action="#{positionCandidates.mapCandidateToPosition}" />
     </h:form>
-
+    <ol>
+        <ui:repeat value="#{positionCandidates.candidate.positionsList}" var="candidatePositionList">
+            <li>#{candidatePositionList.name}</li>
+        </ui:repeat>
+    </ol>
 </h:body>
 </html>

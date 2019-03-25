@@ -10,8 +10,8 @@ import java.util.Objects;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Candidate.findAll", query = "select t from Candidate as t"),
-        @NamedQuery(name = "Candidate.findById", query = "select t from Position as t where t.id = :candidateId")
+        @NamedQuery(name = "Candidate.findAll", query = "select c from Candidate as c"),
+        @NamedQuery(name = "Candidate.findById", query = "select p from Position as p where p.id = :candidateId")
 })
 @Table(name = "CANDIDATE")
 @Getter @Setter
@@ -30,8 +30,9 @@ public class Candidate {
     @OneToMany(mappedBy = "candidate", fetch = FetchType.EAGER)
     private List<Interview> interviews = new ArrayList<>();
 
-
+    @Getter
     @ManyToMany
+    @JoinTable(name="CANDIDATE_POSITION")
     private List<Position> positionsList = new ArrayList<>();
 
     @Override

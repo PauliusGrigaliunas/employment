@@ -29,18 +29,16 @@ public class PositionCandidates {
 
     @Getter
     private List<Candidate> candidatesOfPositions;
-    @Getter
-    private List<Candidate> positionsOfPositions;
 
     @PostConstruct
     public void init() {
         loadCandidateOfPosition();
     }
 
-    public void loadCandidateOfPosition() {
-       /* /*this.candidatesOfPositions = candidatesDAO.(this.candidate.getId());
-        this.positionsOfPositions = positionsDAO.getQualifiedCandidates(this.position.getId());*/
+    private void loadCandidateOfPosition(){
+        this.candidatesOfPositions = candidatesDAO.loadAll();
     }
+
     @Transactional
     public String createCandidate(){
         this.candidatesDAO.persist(candidate);
@@ -54,12 +52,10 @@ public class PositionCandidates {
 
     @Transactional
     public void mapCandidateToPosition() {
-        Candidate candidate = candidatesDAO.loadOne(this.candidate.getId());
-        Position  position = positionsDAO.loadOne(this.position.getId());
+        Candidate candidate = candidatesDAO.findOne(this.candidate.getId());
+        Position  position = positionsDAO.findOne(this.position.getId());
         candidate.addPosition(position);
-        position.addCandidate(candidate);
         candidatesDAO.merge(candidate);
-        positionsDAO.merge(position);
     }
 
     @Transactional
