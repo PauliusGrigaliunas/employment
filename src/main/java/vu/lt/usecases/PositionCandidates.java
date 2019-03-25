@@ -51,11 +51,12 @@ public class PositionCandidates {
     }
 
     @Transactional
-    public void mapCandidateToPosition() {
+    public String mapCandidateToPosition() {
         Candidate candidate = candidatesDAO.findOne(this.candidate.getId());
         Position  position = positionsDAO.findOne(this.position.getId());
         candidate.addPosition(position);
         candidatesDAO.merge(candidate);
+        return "candidacy?faces-redirect=true";
     }
 
     @Transactional

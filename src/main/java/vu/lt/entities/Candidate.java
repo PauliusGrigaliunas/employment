@@ -17,9 +17,7 @@ import java.util.Objects;
 @Getter @Setter
 public class Candidate {
 
-    public Candidate(){
-
-    }
+    public Candidate(){ }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,13 +25,13 @@ public class Candidate {
 
     private String name;
 
-    @OneToMany(mappedBy = "candidate")
-    private List<Interview> interviews = new ArrayList<>();
-
     @Getter
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="CANDIDATE_POSITION")
     private List<Position> positionsList = new ArrayList<>();
+
+    @OneToMany(mappedBy="candidate")
+    private List<Interview> interviews = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {
@@ -45,7 +43,6 @@ public class Candidate {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(name);
     }
 
