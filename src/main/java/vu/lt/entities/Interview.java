@@ -24,7 +24,7 @@ public class Interview implements Serializable {
     @Column(name = "NAME")
     private String name;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="CANDIDATE_ID")
     private Candidate candidate;
 

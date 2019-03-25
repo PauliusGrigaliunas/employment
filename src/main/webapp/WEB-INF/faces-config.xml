@@ -14,5 +14,11 @@
             <to-view-id>/index.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
+        <navigation-case>
+            <from-action>#{positionCandidates.mapCandidateToPosition}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/candidacy.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
     </navigation-rule>
 </faces-config>

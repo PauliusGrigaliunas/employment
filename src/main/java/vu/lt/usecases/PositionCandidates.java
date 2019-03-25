@@ -9,9 +9,11 @@ import vu.lt.persistence.PositionsDAO;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Map;
 
 @Model //RequestScoped
 public class PositionCandidates {
@@ -37,6 +39,7 @@ public class PositionCandidates {
 
     private void loadCandidateOfPosition(){
         this.candidatesOfPositions = candidatesDAO.loadAll();
+        //this.candidatesOfPositions = positionsDAO.getQualifiedCandidates(this.position.getId());
     }
 
     @Transactional
