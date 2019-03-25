@@ -29,7 +29,7 @@ public class Position {
 
     private String name;
 
-    @ManyToMany(mappedBy = "positionsList" )
+    @ManyToMany(mappedBy = "positionsList")
     private List<Candidate> candidatesList = new ArrayList<>();
 
     @Override

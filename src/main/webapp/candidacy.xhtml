@@ -36,17 +36,9 @@
         <h:commandButton value="Map" action="#{positionCandidates.mapCandidateToPosition}" />
     </h:form>
     <ol>
-        <ui:repeat value="#{positionCandidates.candidatesOfPositions}" var="candidatePositionList">
-            <li>#{candidatePositionList.name}
-
-            </li>
-            <ul>
-                <ui:repeat value="#{candidatePositionList.positionsList}" var="position">
-                <li>#{position.name}</li>
-                </ui:repeat>
-            </ul>
+        <ui:repeat value="#{positionCandidates.candidate.positionsList}" var="candidatePositionList">
+            <li>#{candidatePositionList.name}</li>
         </ui:repeat>
     </ol>
-    <h:link value="Back" outcome="index?" />
 </h:body>
 </html>
