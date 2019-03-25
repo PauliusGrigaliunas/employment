@@ -27,11 +27,11 @@ public class Candidate {
 
     private String name;
 
-    @OneToMany(mappedBy = "candidate", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "candidate")
     private List<Interview> interviews = new ArrayList<>();
 
     @Getter
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="CANDIDATE_POSITION")
     private List<Position> positionsList = new ArrayList<>();
 
