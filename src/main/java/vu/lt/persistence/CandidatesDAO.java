@@ -3,6 +3,7 @@ package vu.lt.persistence;
 import vu.lt.entities.Candidate;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 @ApplicationScoped
 public class CandidatesDAO {
 
-    @PersistenceContext
+    @Inject
     private EntityManager em;
 
     public List<Candidate> loadAll() {

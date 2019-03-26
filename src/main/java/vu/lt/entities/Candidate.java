@@ -25,12 +25,11 @@ public class Candidate {
 
     private String name;
 
-    @Getter
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(name="CANDIDATE_POSITION")
     private List<Position> positionsList = new ArrayList<>();
 
-    @OneToMany(mappedBy="candidate")
+    @OneToMany(mappedBy="candidate", cascade = CascadeType.ALL)
     private List<Interview> interviews = new ArrayList<>();
 
     @Override
