@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:head/>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+</style>
+<h:body>
+    <div style="display: table;clear: both;">
+        <h2>Assign:</h2>
+        <div style="float:left; width: 60%; padding: 10px;">
+            <h2>Candidates</h2>
+            <ol>
+                <ui:repeat value="#{candidates.allCandidates}" var="candidate">
+                    <li>#{candidate.name} (candidate id = #{candidate.id})</li>
+                </ui:repeat>
+            </ol>
+        </div>
+        <div style="float:left; width: 60%; padding: 10px;">
+            <h2>Positions:</h2>
+            <ol>
+                <ui:repeat value="#{positions.allPositions}" var="position">
+                    <li>#{position.name} (position id = #{position.id})</li>
+                </ui:repeat>
+            </ol>
+        </div>
+    </div>
+    <h:form>
+        <h:inputText value="#{positionCandidates.candidate.id}" required="true" />
+        <h:inputText value="#{positionCandidates.position.id}" required="true" />
+        <h:commandButton value="Map" action="#{positionCandidates.mapCandidateToPosition}" />
+    </h:form>
+    <ol>
+        <ui:repeat value="#{positionCandidates.candidatesOfPositions}" var="candidatePositionList">
+            <li>#{candidatePositionList.name}
+
+            </li>
+            <ul>
+                <ui:repeat value="#{candidatePositionList.positionsList}" var="position">
+                    <li>#{position.name}</li>
+                </ui:repeat>
+            </ul>
+        </ui:repeat>
+    </ol>
+    <h:link value="Back" outcome="myBatisCandidates?" />
+</h:body>
+</html>
