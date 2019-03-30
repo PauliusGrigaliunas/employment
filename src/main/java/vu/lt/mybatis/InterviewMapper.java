@@ -1,6 +1,6 @@
-package vu.lt.dao;
+package vu.lt.mybatis;
 
-import vu.lt.persistence.mybatis.model.Interview;
+import vu.lt.mybatis.model.Interview;
 
 import java.util.List;
 
