@@ -6,6 +6,7 @@
     <typeAliases>
         <typeAlias type="vu.lt.mybatis.model.Candidate" alias="Candidate"/>
         <typeAlias type="vu.lt.mybatis.model.Interview" alias="Interview"/>
+        <typeAlias type="vu.lt.mybatis.model.Position" alias="Position"/>
     </typeAliases>
     <environments default="development">
         <environment id="development">
@@ -18,5 +19,6 @@
     <mappers>
         <mapper resource="mybatis.xml/CandidateMapper.xml"/>
         <mapper resource="mybatis.xml/InterviewMapper.xml"/>
+        <mapper resource="mybatis.xml/PositionMapper.xml"/>
     </mappers>
 </configuration>
