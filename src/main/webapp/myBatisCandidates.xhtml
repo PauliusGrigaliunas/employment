@@ -6,21 +6,21 @@
 >
 <h:head/>
 <h:body>
-    <h1>ORM</h1>
+    <h1>Data mapper (Mybatis)</h1>
     <h2>Candidates</h2>
     <ol>
         <ui:repeat value="#{candidates.allCandidates}" var="candidate">
-            <li>#{candidate.name} <h:link value="Interviews" outcome="interviews?candidateId=#{candidate.id}" /></li>
+            <li>#{candidate.name} <h:link value="Interviews" outcome="myBatisInterviews?candidateId=#{candidate.id}" /></li>
         </ui:repeat>
     </ol>
     <h:form>
         <h:inputText value="#{candidates.candidateToCreate.name}" required="true" />
         <h:commandButton value="Add new candidate" action="#{candidates.createCandidate}" />
     </h:form>
-    <h:link value="Positions" outcome="positions?" />
+    <h:link value="Positions" outcome="myBatisPositions?" />
     <br></br>
-    <h:link value="Assign candidate to position" outcome="candidacy?" />
+    <h:link value="Assign candidate to position" outcome="myBatisCandidacy?" />
     <hr></hr>
-    <h:button value="to MyBatis" outcome="myBatisCandidates?" />
+    <h:button value="To ORM" outcome="index?" />
 </h:body>
 </html>
