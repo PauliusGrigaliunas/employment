@@ -55,6 +55,11 @@
       <artifactId>mybatis-cdi</artifactId>
       <version>1.0.0</version>
     </dependency>
+      <dependency>
+          <groupId>antlr</groupId>
+          <artifactId>antlr</artifactId>
+          <version>2.7.7</version>
+      </dependency>
   </dependencies>
 
   <build>
