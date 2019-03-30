@@ -1,6 +1,6 @@
 package vu.lt.myBatis.model.dao;
 
-import vu.lt.persistence.mybatis.model.Position;
+import vu.lt.myBatis.model.Position;
 
 import java.util.List;
 
