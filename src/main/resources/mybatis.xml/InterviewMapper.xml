@@ -59,4 +59,9 @@
     select ID, NAME, CANDIDATE_ID
     from PUBLIC.INTERVIEW
   </select>
+  <select id="getInterviewByCandidateID" resultMap="BaseResultMap">
+    select ID, NAME, CANDIDATE_ID
+    from PUBLIC.INTERVIEW
+    where CANDIDATE_ID = #{id,jdbcType=INTEGER}
+  </select>
 </mapper>

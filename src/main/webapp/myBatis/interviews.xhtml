@@ -9,11 +9,16 @@
 <h:body>
     <h2>Candidate #{interviewsForCandidate.candidate.name} interviews:</h2>
 
+    <ol>
+        <ui:repeat value="#{interviewsForCandidateMyBatis.allInterviews}" var="interview">
+            <li>#{interview.name}</li>
+        </ui:repeat>
+    </ol>
     <h:form>
-        <h:inputText value="#{interviewsForCandidate.interviewToCreate.name}" required="true" />
-        <h:inputText value="#{interviewsForCandidate.interviewToCreate.candidate.id}" required="true" />
-        <h:commandButton value="Add new interview" action="#{interviewsForCandidateMyBatis.createInterview}" />
-
+        <h:inputText value="#{interviewsForCandidateMyBatis.interviewToCreate.name}" required="true" />
+        <h:commandButton value="Add new interview" action="#{interviewsForCandidateMyBatis.createInterview}" >
+            <f:param name="candidateId" value="#{interviewsForCandidateMyBatis.candidate.id}" />
+        </h:commandButton>
     </h:form>
     <h:link value="Back" outcome="candidates?" />
 </h:body>

@@ -29,6 +29,9 @@ public class InterviewsForCandidateMyBatis {
     @Getter @Setter
     private Interview interviewToCreate = new Interview();
 
+    @Getter @Setter
+    private Candidate candidate;
+
     @PostConstruct
     public void init() {
         this.loadAllInterview();
@@ -38,13 +41,25 @@ public class InterviewsForCandidateMyBatis {
         Map<String, String> requestParameters =
                 FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         Integer candidateId = Integer.parseInt(requestParameters.get("candidateId"));
-
+        this.candidate = candidateMapper.selectByPrimaryKey(candidateId);
         this.allInterviews = interviewMapper.getInterviewByCandidateID(candidateId);
     }
 
     @Transactional
     public String createInterview() {
+        interviewToCreate.setCandidateId(candidate.getId());
+        int a = 2;
         interviewMapper.insert(interviewToCreate);
-        return "/myBatis/interviews?faces-redirect=true";
+        return "/myBatis/interviews?faces-redirect=true&candidateId=" + this.candidate.getId();
+    }
+
+    private Candidate getNewCandidateID(Integer candidateID) {
+        List<Candidate> candidates = candidateMapper.selectAll();
+        for (int i = 0; i < candidates.size(); i++) {
+            if (candidates.get(i).getId().equals(candidateID)) {
+                return candidates.get(i);
+            }
+        }
+        return null;
     }
 }
