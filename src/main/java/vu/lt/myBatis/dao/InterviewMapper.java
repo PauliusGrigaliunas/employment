@@ -46,4 +46,7 @@ public interface InterviewMapper {
      * @mbg.generated Sat Mar 30 20:43:11 EET 2019
      */
     int updateByPrimaryKey(Interview record);
+
+
+    List<Interview> getInterviewByCandidateID(Integer id);
 }

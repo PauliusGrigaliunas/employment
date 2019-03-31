@@ -8,16 +8,12 @@
 <h:head/>
 <h:body>
     <h2>Candidate #{interviewsForCandidate.candidate.name} interviews:</h2>
-    <ol>
-        <ui:repeat value="#{interviewsForCandidate.candidate.interviews}" var="interview">
-            <li>#{interview.name}</li>
-        </ui:repeat>
-    </ol>
+
     <h:form>
-        <h:inputText a:placeholder="name" value="#{interviewsForCandidate.interviewToCreate.name}" required="true" />
-        <h:commandButton value="Add interview to the candidate" action="#{interviewsForCandidate.createInterview}" >
-            <f:param name="candidateId" value="#{interviewsForCandidate.candidate.id}" />
-        </h:commandButton>
+        <h:inputText value="#{interviewsForCandidate.interviewToCreate.name}" required="true" />
+        <h:inputText value="#{interviewsForCandidate.interviewToCreate.candidate.id}" required="true" />
+        <h:commandButton value="Add new interview" action="#{interviewsForCandidateMyBatis.createInterview}" />
+
     </h:form>
     <h:link value="Back" outcome="candidates?" />
 </h:body>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="vu.lt.myBatis.model.PositionMapper">
+<mapper namespace="vu.lt.myBatis.dao.PositionMapper">
   <resultMap id="BaseResultMap" type="vu.lt.myBatis.model.Position">
     <!--
       WARNING - @mbg.generated

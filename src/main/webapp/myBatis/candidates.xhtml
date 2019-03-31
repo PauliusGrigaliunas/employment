@@ -10,12 +10,13 @@
     <h2>Candidates</h2>
     <ol>
         <ui:repeat value="#{candidatesMyBatis.allCandidates}" var="candidate">
-            <li>#{candidate.name}</li>
+            <li>#{candidate.name} <h:link value=" Interviews" outcome="interviews?candidateId=#{candidate.id}" /></li>
         </ui:repeat>
     </ol>
     <h:form>
         <h:inputText value="#{candidatesMyBatis.candidateToCreate.name}" required="true" />
         <h:commandButton value="Add new candidate" action="#{candidatesMyBatis.createCandidate}" />
+
     </h:form>
     <h:link value="Positions" outcome="positions?" />
     <br></br>

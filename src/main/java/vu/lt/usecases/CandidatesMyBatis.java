@@ -14,7 +14,7 @@ import java.util.List;
 @Model
 public class CandidatesMyBatis {
     @Inject
-    private CandidateMapper candidatesDAO;
+    private CandidateMapper candidateMapper;
 
     @Getter
     private List<Candidate> allCandidates;
@@ -28,13 +28,12 @@ public class CandidatesMyBatis {
     }
 
     private void loadAllCandidate() {
-        this.allCandidates = candidatesDAO.selectAll();
+        this.allCandidates = candidateMapper.selectAll();
     }
 
     @Transactional
     public String createCandidate() {
-        int a=5;
-        candidatesDAO.insert(candidateToCreate);
+        candidateMapper.insert(candidateToCreate);
         return "/myBatis/candidates?faces-redirect=true";
     }
 }
