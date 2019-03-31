@@ -6,19 +6,17 @@ import vu.lt.myBatis.model.Candidate;
 import vu.lt.myBatis.dao.CandidateMapper;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.List;
 
 @Model
-@ApplicationScoped
 public class CandidatesMyBatis {
     @Inject
-    private CandidateMapper candidateMapper;
+    private CandidateMapper candidatesDAO;
 
-    @Getter @Setter
+    @Getter
     private List<Candidate> allCandidates;
 
     @Getter @Setter
@@ -30,12 +28,13 @@ public class CandidatesMyBatis {
     }
 
     private void loadAllCandidate() {
-        this.allCandidates = candidateMapper.selectAll();
+        this.allCandidates = candidatesDAO.selectAll();
     }
 
     @Transactional
     public String createCandidate() {
-        candidateMapper.insert(candidateToCreate);
+        int a=5;
+        candidatesDAO.insert(candidateToCreate);
         return "/myBatis/candidates?faces-redirect=true";
     }
 }

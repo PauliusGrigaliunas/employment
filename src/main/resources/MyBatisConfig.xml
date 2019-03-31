@@ -4,9 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="vu.lt.mybatis.model.Candidate" alias="Candidate"/>
-        <typeAlias type="vu.lt.mybatis.model.Interview" alias="Interview"/>
-        <typeAlias type="vu.lt.mybatis.model.Position" alias="Position"/>
+        <typeAlias type="vu.lt.myBatis.model.Candidate" alias="Candidate"/>
+        <typeAlias type="vu.lt.myBatis.model.Interview" alias="Interview"/>
+        <typeAlias type="vu.lt.myBatis.model.Position" alias="Position"/>
     </typeAliases>
     <environments default="development">
         <environment id="development">
