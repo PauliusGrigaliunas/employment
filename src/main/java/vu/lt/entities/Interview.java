@@ -24,6 +24,10 @@ public class Interview implements Serializable {
     @Column(name = "NAME")
     private String name;
 
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer optLockVersion;
+
     @ManyToOne
     @JoinColumn(name="CANDIDATE_ID")
     private Candidate candidate;

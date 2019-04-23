@@ -27,7 +27,12 @@ public class Position {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "NAME")
     private String name;
+
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer optLockVersion;
 
     @ManyToMany(mappedBy = "positionsList")
     private List<Candidate> candidatesList = new ArrayList<>();
