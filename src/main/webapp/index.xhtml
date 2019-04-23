@@ -10,7 +10,7 @@
     <h2>Candidates</h2>
     <ol>
         <ui:repeat value="#{candidates.allCandidates}" var="candidate">
-            <li>#{candidate.name} <h:link value="Interviews" outcome="interviews?candidateId=#{candidate.id}" /></li>
+            <li>#{candidate.name} <h:link value="Edit" outcome="interviews?candidateId=#{candidate.id}" />  | <h:link value="Interviews" outcome="interviews?candidateId=#{candidate.id}" /></li>
         </ui:repeat>
     </ol>
     <h:form>
