@@ -5,7 +5,6 @@ import vu.lt.entities.Candidate;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @ApplicationScoped
@@ -13,6 +12,14 @@ public class CandidatesDAO {
 
     @Inject
     private EntityManager em;
+
+    public void persist(Candidate candidate){
+        this.em.persist(candidate);
+    }
+    public void updateAndFlush(Candidate candidate) {
+        em.merge(candidate);
+        em.flush();
+    }
 
     public List<Candidate> loadAll() {
         return em.createNamedQuery("Candidate.findAll", Candidate.class).getResultList();
@@ -27,9 +34,6 @@ public class CandidatesDAO {
         this.em = em;
     }
 
-    public void persist(Candidate candidate){
-        this.em.persist(candidate);
-    }
 
     public Candidate findOne(Integer id) {
         return em.find(Candidate.class, id);
