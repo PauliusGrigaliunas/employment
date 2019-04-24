@@ -52,4 +52,9 @@ public class EditCandidates implements Serializable {
             RequestContext.getCurrentInstance().addCallbackParam("validationFailed", true);
         }
     }
+    @Transactional
+    public String deleteSelectedCandidate(){
+        candidatesDAO.delete(candidate);
+        return "index?";
+    }
 }

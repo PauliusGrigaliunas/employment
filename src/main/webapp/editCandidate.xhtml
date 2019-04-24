@@ -18,6 +18,10 @@
         <h:commandButton value="Edit name of candidate" action="#{editCandidates.updateSelectedCandidate}">
             <f:param name="candidateId" value="#{editCandidates.candidate.id}" />
         </h:commandButton>
+        <h:commandButton value="delete candidate" action="#{editCandidates.deleteSelectedCandidate}"
+        >
+            <f:param name="candidateId" value="#{editCandidates.candidate.id}" />
+        </h:commandButton>
     </h:form>
     <h:link value="Back" outcome="index?" />
 </body>
