@@ -18,7 +18,12 @@
                              oncomplete="PF('candidateDialog').show()" />
             <p:dialog header="Edit Candidate" widgetVar="candidateDialog" modal="true" closable="true" resizable="false" closeOnEscape="true">
             <p:outputPanel id="candidateDetail"/>
-            </p:dialog></li>
+                <p:outputLabel value="name: #{candidate.name}" />
+
+
+
+            </p:dialog>
+            </li>
         </ui:repeat>
     </ol>
     <h:form>
