@@ -3,20 +3,22 @@ package vu.lt.usecases;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.Hibernate;
+import org.omnifaces.cdi.ViewScoped;
 import org.primefaces.context.RequestContext;
 import vu.lt.entities.Candidate;
 import vu.lt.persistence.CandidatesDAO;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.inject.Model;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.persistence.OptimisticLockException;
 import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.Map;
 
-@Model
+@Named
+@ViewScoped
 public class EditCandidates implements Serializable {
 
     @Inject
@@ -30,6 +32,10 @@ public class EditCandidates implements Serializable {
 
     @PostConstruct
     public void init() {
+        load();
+    }
+
+    private void load(){
         Map<String, String> requestParameters =
                 FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         Integer candidateId = Integer.parseInt(requestParameters.get("candidateId"));
@@ -45,12 +51,17 @@ public class EditCandidates implements Serializable {
     public void updateSelectedCandidate() {
         try {
             candidatesDAO.updateAndFlush(candidate);
-            //reloadAll();
+            load();
         } catch (OptimisticLockException ole) {
             conflictingCandidate = candidatesDAO.findOne(candidate.getId());
             Hibernate.initialize(conflictingCandidate.getPositionsList());
             RequestContext.getCurrentInstance().addCallbackParam("validationFailed", true);
         }
+    }
+    @Transactional
+    public void overwriteCandidate() {
+        candidate.setOptLockVersion(conflictingCandidate.getOptLockVersion());
+        updateSelectedCandidate();
     }
     @Transactional
     public String deleteSelectedCandidate(){

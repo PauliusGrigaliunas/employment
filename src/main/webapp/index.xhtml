@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
 >
 <h:head/>
 <h:body>
@@ -10,7 +11,14 @@
     <h2>Candidates</h2>
     <ol>
         <ui:repeat value="#{candidates.allCandidates}" var="candidate">
-            <li>#{candidate.name} <h:link value="Edit" outcome="editCandidate?candidateId=#{candidate.id}" />  | <h:link value="Interviews" outcome="interviews?candidateId=#{candidate.id}" /></li>
+            <li>#{candidate.name} <h:link value="Edit" actionListener="#{editCandidates.prepareForEditing(candidate)}" outcome="editCandidate?candidateId=#{candidate.id}" />  | <h:link value="Interviews" outcome="interviews?candidateId=#{candidate.id}" />
+            | <p:commandButton value="Edit"
+                               actionListener="#{editCandidates.prepareForEditing(candidate)}"
+                             update="candidateDetail"
+                             oncomplete="PF('candidateDialog').show()" />
+            <p:dialog header="Edit Candidate" widgetVar="candidateDialog" modal="true" closable="true" resizable="false" closeOnEscape="true">
+            <p:outputPanel id="candidateDetail"/>
+            </p:dialog></li>
         </ui:repeat>
     </ol>
     <h:form>
