@@ -1,5 +1,6 @@
 package vu.lt.rest;
 
+import lombok.val;
 import vu.lt.entities.Candidate;
 import vu.lt.persistence.CandidatesDAO;
 
@@ -61,5 +62,19 @@ public class EmployeesRestServices extends HttpServlet {
             return e.toString();
         }
         return candidate.toString();
+    }
+
+    @PUT
+    @Consumes("application/json")
+    @Transactional
+    @Path("/update/{id}")
+    public String add(@PathParam("id") int id, final Candidate input) {
+        val dbCreature = em.find(Candidate.class, id);
+        if (dbCreature == null) {
+            throw new IllegalArgumentException("creature id " + id + "not found");
+        }
+        dbCreature.setName(input.getName());
+        em.merge(dbCreature);
+        return dbCreature.toString();
     }
 }
