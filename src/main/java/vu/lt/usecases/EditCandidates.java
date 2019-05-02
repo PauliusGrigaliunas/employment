@@ -32,13 +32,12 @@ public class EditCandidates implements Serializable {
 
     @PostConstruct
     public void init() {
-        load();
+        Map<String, String> requestParameters =
+            FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+        load(Integer.parseInt(requestParameters.get("candidateId")));
     }
 
-    private void load(){
-        Map<String, String> requestParameters =
-                FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-        Integer candidateId = Integer.parseInt(requestParameters.get("candidateId"));
+    private void load(int candidateId){
         this.candidate = candidatesDAO.findOne(candidateId);
     }
 
@@ -51,7 +50,7 @@ public class EditCandidates implements Serializable {
     public void updateSelectedCandidate() {
         try {
             candidatesDAO.updateAndFlush(candidate);
-            load();
+            load(candidate.getId());
         } catch (OptimisticLockException ole) {
 
             conflictingCandidate = candidatesDAO.findOne(candidate.getId());
