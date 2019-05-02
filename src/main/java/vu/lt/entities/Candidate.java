@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -15,6 +16,7 @@ import java.util.Objects;
 })
 @Table(name = "CANDIDATE")
 @Getter @Setter
+@XmlRootElement
 public class Candidate {
 
     public Candidate(){ }
