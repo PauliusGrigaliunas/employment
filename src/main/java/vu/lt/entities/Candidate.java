@@ -3,6 +3,7 @@ package vu.lt.entities;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.inject.Named;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
@@ -25,7 +26,8 @@ public class Candidate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "NAME")
+    @Named
+    @Column(name = "NAME", nullable = false)
     private String name;
 
     @Version
