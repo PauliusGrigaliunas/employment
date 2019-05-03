@@ -5,6 +5,7 @@ import lombok.Setter;
 import vu.lt.entities.Interview;
 import vu.lt.entities.Position;
 
+import javax.enterprise.inject.Alternative;
 import javax.inject.Named;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@Alternative
 @Entity
 @NamedQueries({
         @NamedQuery(name = "Candidate.findAll", query = "select c from Candidate as c"),
