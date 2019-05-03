@@ -1,7 +1,7 @@
 package vu.lt.rest;
 
 import lombok.val;
-import vu.lt.entities.Candidate;
+import vu.lt.entities.Employee.Candidate;
 import vu.lt.persistence.CandidatesDAO;
 
 import javax.annotation.Nonnull;

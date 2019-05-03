@@ -1,22 +1,25 @@
 package vu.lt.usecases;
 
+import lombok.Getter;
+import lombok.Setter;
+import org.omnifaces.cdi.ViewScoped;
+import vu.lt.entities.Employee.Candidate;
+import vu.lt.entities.Interview;
+import vu.lt.persistence.CandidatesDAO;
+import vu.lt.persistence.InterviewsDAO;
+
 import javax.annotation.PostConstruct;
-import javax.enterprise.inject.Model;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-import lombok.Getter;
-import lombok.Setter;
-import vu.lt.entities.Interview;
-import vu.lt.entities.Candidate;
-import vu.lt.persistence.InterviewsDAO;
-import vu.lt.persistence.CandidatesDAO;
 
-@Model
+@Named
+@ViewScoped
 public class InterviewsForCandidate implements Serializable {
 
     @Inject

@@ -2,7 +2,7 @@ package vu.lt.usecases;
 
 import lombok.Getter;
 import lombok.Setter;
-import vu.lt.entities.Candidate;
+import vu.lt.entities.Employee.Candidate;
 import vu.lt.persistence.CandidatesDAO;
 
 import javax.annotation.PostConstruct;

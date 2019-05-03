@@ -1,13 +1,11 @@
 package vu.lt.persistence;
 
-import vu.lt.entities.Candidate;
+import vu.lt.entities.Employee.Candidate;
 import vu.lt.entities.Position;
-import vu.lt.usecases.Candidates;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @ApplicationScoped

@@ -5,11 +5,10 @@ import lombok.Setter;
 import org.hibernate.Hibernate;
 import org.omnifaces.cdi.ViewScoped;
 import org.primefaces.context.RequestContext;
-import vu.lt.entities.Candidate;
+import vu.lt.entities.Employee.Candidate;
 import vu.lt.persistence.CandidatesDAO;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -65,7 +64,7 @@ public class EditCandidates implements Serializable {
         candidate.setOptLockVersion(conflictingCandidate.getOptLockVersion());
         updateSelectedCandidate();
     }
-    @ApplicationScoped
+
     @Transactional
     public String deleteSelectedCandidate(){
         try {

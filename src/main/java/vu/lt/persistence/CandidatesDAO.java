@@ -1,6 +1,6 @@
 package vu.lt.persistence;
 
-import vu.lt.entities.Candidate;
+import vu.lt.entities.Employee.Candidate;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

@@ -2,18 +2,19 @@ package vu.lt.usecases;
 
 import lombok.Getter;
 import lombok.Setter;
-import vu.lt.entities.Candidate;
+import vu.lt.entities.Employee.Candidate;
 import vu.lt.entities.Position;
 import vu.lt.persistence.CandidatesDAO;
 import vu.lt.persistence.PositionsDAO;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.inject.Model;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.List;
 
-@Model //RequestScoped
+//@Model
+@RequestScoped
 public class PositionCandidates {
 
     @Inject

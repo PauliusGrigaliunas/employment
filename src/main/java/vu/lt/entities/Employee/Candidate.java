@@ -1,7 +1,9 @@
-package vu.lt.entities;
+package vu.lt.entities.Employee;
 
 import lombok.Getter;
 import lombok.Setter;
+import vu.lt.entities.Interview;
+import vu.lt.entities.Position;
 
 import javax.inject.Named;
 import javax.persistence.*;
@@ -18,7 +20,7 @@ import java.util.Objects;
 @Table(name = "CANDIDATE")
 @Getter @Setter
 @XmlRootElement
-public class Candidate {
+public class Candidate implements IWorker {
 
     public Candidate(){ }
 
