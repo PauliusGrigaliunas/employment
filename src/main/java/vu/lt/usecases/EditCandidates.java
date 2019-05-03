@@ -9,6 +9,7 @@ import vu.lt.entities.Candidate;
 import vu.lt.persistence.CandidatesDAO;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -64,9 +65,15 @@ public class EditCandidates implements Serializable {
         candidate.setOptLockVersion(conflictingCandidate.getOptLockVersion());
         updateSelectedCandidate();
     }
+    @ApplicationScoped
     @Transactional
     public String deleteSelectedCandidate(){
-        candidatesDAO.delete(candidate);
+        try {
+            candidatesDAO.delete(candidate);
+        } catch (Exception e) {
+            System.out.println("asdf " + e.getMessage());
+            return "index?";
+        }
         return "index?";
     }
 }

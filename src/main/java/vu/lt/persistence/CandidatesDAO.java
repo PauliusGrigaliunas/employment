@@ -34,7 +34,7 @@ public class CandidatesDAO {
         this.em = em;
     }
 
-    public void delete(Candidate candidate){ this.em.remove(candidate);}
+    public void delete(Candidate candidate){ this.em.remove(em.contains(candidate) ? candidate : this.em.merge(candidate)); }
 
     public Candidate findOne(Integer id) {
         return em.find(Candidate.class, id);
