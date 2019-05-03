@@ -20,7 +20,7 @@ import java.util.Objects;
 @Table(name = "CANDIDATE")
 @Getter @Setter
 @XmlRootElement
-public class Candidate implements IWorker {
+public class Candidate {
 
     public Candidate(){ }
 
