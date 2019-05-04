@@ -71,8 +71,8 @@ public class EditCandidates implements Serializable {
             candidatesDAO.delete(candidate);
         } catch (Exception e) {
             System.out.println("asdf " + e.getMessage());
-            return "index?";
+            return "failed";
         }
-        return "index?";
+        return "success";
     }
 }

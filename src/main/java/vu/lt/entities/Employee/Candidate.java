@@ -5,6 +5,7 @@ import lombok.Setter;
 import vu.lt.entities.Interview;
 import vu.lt.entities.Position;
 
+import javax.enterprise.inject.Alternative;
 import javax.inject.Named;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -20,7 +21,8 @@ import java.util.Objects;
 @Table(name = "CANDIDATE")
 @Getter @Setter
 @XmlRootElement
-public class Candidate {
+@Alternative
+public class Candidate implements IWorker {
 
     public Candidate(){ }
 

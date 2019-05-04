@@ -24,4 +24,13 @@
             <redirect/>
         </navigation-case>
     </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/editCandidate.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{editCandidates.deleteSelectedCandidate}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>
