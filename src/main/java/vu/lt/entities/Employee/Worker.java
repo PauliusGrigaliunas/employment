@@ -16,7 +16,7 @@ import java.util.Objects;
 @Getter @Setter
 @XmlRootElement
 @Alternative
-public class Worker implements IWorker {
+public class Worker implements ICandidate {
 
     public Worker(){ }
 

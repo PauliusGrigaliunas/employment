@@ -22,7 +22,7 @@ import java.util.Objects;
 @Getter @Setter
 @XmlRootElement
 @Alternative
-public class Candidate implements IWorker {
+public class Candidate implements ICandidate {
 
     public Candidate(){ }
 

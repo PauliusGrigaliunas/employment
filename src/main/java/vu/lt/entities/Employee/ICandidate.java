@@ -9,11 +9,11 @@ import javax.persistence.Table;
 import java.util.List;
 
 @NamedQueries({
-        @NamedQuery(name = "IWorker.findAll", query = "select c from Candidate as c"),
-        @NamedQuery(name = "IWorker.findById", query = "select p from Position as p where p.id = :candidateId")
+        @NamedQuery(name = "ICandidate.findAll", query = "select c from Candidate as c"),
+        @NamedQuery(name = "ICandidate.findById", query = "select p from Position as p where p.id = :candidateId")
 })
 @Table(name = "CANDIDATE")
-public interface IWorker {
+public interface ICandidate {
 
     Integer getId();
     void setId(Integer id);
