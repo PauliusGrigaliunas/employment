@@ -14,11 +14,11 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@NamedQueries({
+/*@NamedQueries({
         @NamedQuery(name = "Candidate.findAll", query = "select c from Candidate as c"),
         @NamedQuery(name = "Candidate.findById", query = "select p from Position as p where p.id = :candidateId")
 })
-@Table(name = "CANDIDATE")
+@Table(name = "CANDIDATE")*/
 @Getter @Setter
 @XmlRootElement
 @Alternative
@@ -57,6 +57,7 @@ public class Candidate implements ICandidate {
     public int hashCode() {
         return Objects.hash(name);
     }
+
 
     @Override
     public void setInterviews(List Interviews) {

@@ -3,9 +3,9 @@ package vu.lt.entities;
 import lombok.Getter;
 import lombok.Setter;
 import vu.lt.entities.Employee.Candidate;
+import vu.lt.entities.Employee.ICandidate;
 
 import javax.persistence.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -57,7 +57,7 @@ public class Position {
         candidate.getPositionsList().add(this);
     }
 
-    public void removeCandidate(Candidate candidate) {
+    public void removeCandidate(ICandidate candidate) {
         candidatesList.remove(candidate);
         candidate.getPositionsList().remove(this);
     }

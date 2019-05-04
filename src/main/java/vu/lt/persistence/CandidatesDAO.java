@@ -1,6 +1,6 @@
 package vu.lt.persistence;
 
-import vu.lt.entities.Employee.Candidate;
+import vu.lt.entities.Employee.ICandidate;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -13,19 +13,19 @@ public class CandidatesDAO {
     @Inject
     private EntityManager em;
 
-    public void persist(Candidate candidate){
+    public void persist(ICandidate candidate){
         this.em.persist(candidate);
     }
-    public void updateAndFlush(Candidate candidate) {
+    public void updateAndFlush(ICandidate candidate) {
         em.merge(candidate);
         em.flush();
     }
 
-    public List<Candidate> loadAll() {
-        return em.createNamedQuery("Candidate.findAll", Candidate.class).getResultList();
+    public List<ICandidate> loadAll() {
+        return em.createNamedQuery("Candidate.findAll", ICandidate.class).getResultList();
     }
-    public Candidate loadOne(int candidateId) {
-        return em.createNamedQuery("Candidate.findById", Candidate.class)
+    public ICandidate loadOne(int candidateId) {
+        return em.createNamedQuery("Candidate.findById", ICandidate.class)
                 .setParameter("candidateId", candidateId)
                 .getSingleResult();
     }
@@ -34,13 +34,13 @@ public class CandidatesDAO {
         this.em = em;
     }
 
-    public void delete(Candidate candidate){ this.em.remove(em.contains(candidate) ? candidate : this.em.merge(candidate)); }
+    public void delete(ICandidate candidate){ this.em.remove(em.contains(candidate) ? candidate : this.em.merge(candidate)); }
 
-    public Candidate findOne(Integer id) {
-        return em.find(Candidate.class, id);
+    public ICandidate findOne(Integer id) {
+        return em.find(ICandidate.class, id);
     }
 
-    public void merge(Candidate candidate) {
+    public void merge(ICandidate candidate) {
         this.em.merge(candidate);
     }
 }

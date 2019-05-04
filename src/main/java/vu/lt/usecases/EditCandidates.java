@@ -6,6 +6,7 @@ import org.hibernate.Hibernate;
 import org.omnifaces.cdi.ViewScoped;
 import org.primefaces.context.RequestContext;
 import vu.lt.entities.Employee.Candidate;
+import vu.lt.entities.Employee.ICandidate;
 import vu.lt.persistence.CandidatesDAO;
 
 import javax.annotation.PostConstruct;
@@ -26,9 +27,9 @@ public class EditCandidates implements Serializable {
 
     @Getter
     @Setter
-    private Candidate candidate;
+    private ICandidate candidate;
     @Getter
-    private Candidate conflictingCandidate;
+    private ICandidate conflictingCandidate;
 
     @PostConstruct
     public void init() {

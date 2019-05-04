@@ -52,10 +52,7 @@ public class Worker implements ICandidate {
         return Objects.hash(name);
     }
 
-    @Override
-    public void setInterviews(List Interviews) {
 
-    }
 
     public void addPosition(Position position) {
 

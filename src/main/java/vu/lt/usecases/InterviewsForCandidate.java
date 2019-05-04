@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.omnifaces.cdi.ViewScoped;
 import vu.lt.entities.Employee.Candidate;
+import vu.lt.entities.Employee.ICandidate;
 import vu.lt.entities.Interview;
 import vu.lt.persistence.CandidatesDAO;
 import vu.lt.persistence.InterviewsDAO;
@@ -29,7 +30,7 @@ public class InterviewsForCandidate implements Serializable {
     private InterviewsDAO interviewDAO;
 
     @Getter @Setter
-    private Candidate candidate;
+    private ICandidate candidate;
 
     @Getter @Setter
     private Interview interviewToCreate = new Interview();
@@ -47,7 +48,7 @@ public class InterviewsForCandidate implements Serializable {
 
     @Transactional
     public String createInterview() {
-        interviewToCreate.setCandidate(this.candidate);
+        interviewToCreate.setCandidate((Candidate) this.candidate);
         interviewDAO.persist(interviewToCreate);
         return "interviews?faces-redirect=true&candidateId=" + this.candidate.getId();
     }
