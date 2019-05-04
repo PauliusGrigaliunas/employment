@@ -58,6 +58,11 @@ public class Candidate implements IWorker {
         return Objects.hash(name);
     }
 
+    @Override
+    public void setInterviews(List Interviews) {
+
+    }
+
     public void addPosition(Position position) {
         positionsList.add(position);
         position.getCandidatesList().add(this);
