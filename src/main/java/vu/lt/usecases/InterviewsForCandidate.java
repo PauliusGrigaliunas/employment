@@ -3,9 +3,9 @@ package vu.lt.usecases;
 import lombok.Getter;
 import lombok.Setter;
 import org.omnifaces.cdi.ViewScoped;
-import vu.lt.entities.Employee.Candidate;
+import vu.lt.entities.Candidate;
 import vu.lt.entities.Interview;
-import vu.lt.persistence.CandidatesDAO;
+import vu.lt.persistence.ICandidatesDAO;
 import vu.lt.persistence.InterviewsDAO;
 
 import javax.annotation.PostConstruct;
@@ -23,7 +23,7 @@ import java.util.Map;
 public class InterviewsForCandidate implements Serializable {
 
     @Inject
-    private CandidatesDAO candidatesDAO;
+    private ICandidatesDAO candidatesDAO;
 
     @Inject
     private InterviewsDAO interviewDAO;

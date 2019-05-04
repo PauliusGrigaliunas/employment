@@ -5,8 +5,8 @@ import lombok.Setter;
 import org.hibernate.Hibernate;
 import org.omnifaces.cdi.ViewScoped;
 import org.primefaces.context.RequestContext;
-import vu.lt.entities.Employee.Candidate;
-import vu.lt.persistence.CandidatesDAO;
+import vu.lt.entities.Candidate;
+import vu.lt.persistence.ICandidatesDAO;
 
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
@@ -22,7 +22,7 @@ import java.util.Map;
 public class EditCandidates implements Serializable {
 
     @Inject
-    private CandidatesDAO candidatesDAO;
+    private ICandidatesDAO candidatesDAO;
 
     @Getter
     @Setter

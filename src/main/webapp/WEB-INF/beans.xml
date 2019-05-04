@@ -8,7 +8,7 @@
         bean-discovery-mode="annotated">
 
     <alternatives>
-        <class>vu.lt.entities.Employee.Candidate</class>
+        <class>vu.lt.persistence.CandidatesDAO</class>
     </alternatives>
     <interceptors>
         <class>vu.lt.interceptors.MethodLogger</class>

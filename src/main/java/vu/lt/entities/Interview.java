@@ -2,7 +2,6 @@ package vu.lt.entities;
 
 import lombok.Getter;
 import lombok.Setter;
-import vu.lt.entities.Employee.Candidate;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;

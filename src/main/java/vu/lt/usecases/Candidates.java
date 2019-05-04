@@ -2,8 +2,8 @@ package vu.lt.usecases;
 
 import lombok.Getter;
 import lombok.Setter;
-import vu.lt.entities.Employee.Candidate;
-import vu.lt.persistence.CandidatesDAO;
+import vu.lt.entities.Candidate;
+import vu.lt.persistence.ICandidatesDAO;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
@@ -15,7 +15,7 @@ import java.util.List;
 public class Candidates {
 
     @Inject
-    private CandidatesDAO candidatesDAO;
+    private ICandidatesDAO candidatesDAO;
 
     @Getter @Setter
     private Candidate candidateToCreate = new Candidate();

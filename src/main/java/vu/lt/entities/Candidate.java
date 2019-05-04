@@ -1,8 +1,7 @@
-package vu.lt.entities.Employee;
+package vu.lt.entities;
+
 import lombok.Getter;
 import lombok.Setter;
-import vu.lt.entities.Interview;
-import vu.lt.entities.Position;
 
 import javax.enterprise.inject.Alternative;
 import javax.inject.Named;
@@ -13,12 +12,17 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Candidate.findAll", query = "select c from Candidate as c"),
+        @NamedQuery(name = "Candidate.findById", query = "select p from Position as p where p.id = :candidateId")
+})
+@Table(name = "CANDIDATE")
 @Getter @Setter
 @XmlRootElement
 @Alternative
-public class Worker implements ICandidate {
+public class Candidate{
 
-    public Worker(){ }
+    public Candidate(){ }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,8 +47,8 @@ public class Worker implements ICandidate {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Worker worker = (Worker) o;
-        return Objects.equals(name, worker.name);
+        Candidate candidate = (Candidate) o;
+        return Objects.equals(name, candidate.name);
     }
 
     @Override
@@ -52,16 +56,14 @@ public class Worker implements ICandidate {
         return Objects.hash(name);
     }
 
-    @Override
-    public void setInterviews(List Interviews) {
-
-    }
 
     public void addPosition(Position position) {
-
+        positionsList.add(position);
+        position.getCandidatesList().add(this);
     }
 
     public void removePosition(Position position) {
-
+        positionsList.add(position);
+        position.getCandidatesList().add(this);
     }
 }
