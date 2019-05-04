@@ -3,9 +3,16 @@ package vu.lt.entities.Employee;
 import vu.lt.entities.Interview;
 import vu.lt.entities.Position;
 
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import java.util.List;
 
-
+@NamedQueries({
+        @NamedQuery(name = "IWorker.findAll", query = "select c from Candidate as c"),
+        @NamedQuery(name = "IWorker.findById", query = "select p from Position as p where p.id = :candidateId")
+})
+@Table(name = "CANDIDATE")
 public interface IWorker {
 
     Integer getId();
