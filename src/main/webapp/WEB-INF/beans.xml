@@ -10,4 +10,7 @@
     <alternatives>
         <class>vu.lt.entities.Employee.Candidate</class>
     </alternatives>
+    <interceptors>
+        <class>vu.lt.interceptors.MethodLogger</class>
+    </interceptors>
 </beans>

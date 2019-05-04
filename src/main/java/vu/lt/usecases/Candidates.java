@@ -29,6 +29,7 @@ public class Candidates {
     }
 
     @Transactional
+
     public String createCandidate(){
         this.candidatesDAO.persist(candidateToCreate);
         return "index?faces-redirect=true";
