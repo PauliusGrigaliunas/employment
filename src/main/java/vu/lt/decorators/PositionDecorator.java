@@ -19,7 +19,6 @@ public abstract class PositionDecorator implements IPositionsDAO {
 
     @Transactional
     public void persist(Position position) {
-        //System.out.println("\n>> Decorator doing stuff before ICategoriesDAO is invoked. \n");
         position.setName(position.getName() + " *");
         positionsDAO.persist(position);
     }
