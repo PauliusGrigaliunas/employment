@@ -3,7 +3,7 @@ package vu.lt.usecases;
 import lombok.Getter;
 import lombok.Setter;
 import org.omnifaces.cdi.ViewScoped;
-import vu.lt.entities.Candidate;
+import vu.lt.entities.AbsCandidate;
 import vu.lt.entities.Interview;
 import vu.lt.persistence.ICandidatesDAO;
 import vu.lt.persistence.InterviewsDAO;
@@ -29,7 +29,7 @@ public class InterviewsForCandidate implements Serializable {
     private InterviewsDAO interviewDAO;
 
     @Getter @Setter
-    private Candidate candidate;
+    private AbsCandidate candidate;
 
     @Getter @Setter
     private Interview interviewToCreate = new Interview();

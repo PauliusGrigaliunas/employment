@@ -2,7 +2,7 @@ package vu.lt.usecases;
 
 import lombok.Getter;
 import lombok.Setter;
-import vu.lt.entities.Candidate;
+import vu.lt.entities.AbsCandidate;
 import vu.lt.entities.Position;
 import vu.lt.persistence.ICandidatesDAO;
 import vu.lt.persistence.PositionsDAO;
@@ -23,13 +23,13 @@ public class PositionCandidates {
     private ICandidatesDAO candidatesDAO;
     @Getter
     @Setter
-    private Candidate candidate = new Candidate();
+    private AbsCandidate candidate;// = new Candidate();
     @Getter
     @Setter
     private Position position = new Position();
 
     @Getter
-    private List<Candidate> candidatesOfPositions;
+    private List<AbsCandidate> candidatesOfPositions;
 
     @PostConstruct
     public void init() {
@@ -53,7 +53,7 @@ public class PositionCandidates {
 
     @Transactional
     public String mapCandidateToPosition() {
-        Candidate candidate = candidatesDAO.findOne(this.candidate.getId());
+        AbsCandidate candidate = candidatesDAO.findOne(this.candidate.getId());
         Position  position = positionsDAO.findOne(this.position.getId());
         candidate.addPosition(position);
         candidatesDAO.merge(candidate);
@@ -64,7 +64,7 @@ public class PositionCandidates {
     public String createPositionToCandidate(){
 
         if (this.candidate.getId() != 0 && this.position.getId() != 0){
-            Candidate candidate = candidatesDAO.loadOne(this.candidate.getId());
+            AbsCandidate candidate = candidatesDAO.loadOne(this.candidate.getId());
             this.position.addCandidate(candidate);
         }
         this.positionsDAO.persist(this.position);

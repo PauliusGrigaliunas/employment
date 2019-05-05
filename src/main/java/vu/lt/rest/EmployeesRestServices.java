@@ -1,7 +1,7 @@
 package vu.lt.rest;
 
 import lombok.val;
-import vu.lt.entities.Candidate;
+import vu.lt.entities.AbsCandidate;
 import vu.lt.persistence.CandidatesDAO;
 
 import javax.annotation.Nonnull;
@@ -27,14 +27,14 @@ public class EmployeesRestServices {
 
 
     @GET
-    public List<Candidate> getAll() {
+    public List<AbsCandidate> getAll() {
         return candidatesDAO.loadAll();
     }
 
     @GET
     @Path("/{candidateId}")
-    public Candidate find(@PathParam("candidateId") Integer candidateId) {
-        return em.find(Candidate.class, candidateId);
+    public AbsCandidate find(@PathParam("candidateId") Integer candidateId) {
+        return em.find(AbsCandidate.class, candidateId);
     }
 
     @POST
@@ -42,7 +42,7 @@ public class EmployeesRestServices {
     @Path("/createNew")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String newCandidate(@Nonnull Candidate candidate) {
+    public String newCandidate(@Nonnull AbsCandidate candidate) {
 
         try {
             em.persist(candidate);
@@ -57,8 +57,8 @@ public class EmployeesRestServices {
     @Consumes("application/json")
     @Transactional
     @Path("/update/{id}")
-    public String add(@PathParam("id") int id, final Candidate candidate) {
-        val dbCandidate = em.find(Candidate.class, id);
+    public String add(@PathParam("id") int id, final AbsCandidate candidate) {
+        val dbCandidate = em.find(AbsCandidate.class, id);
         if (dbCandidate == null) {
             throw new IllegalArgumentException("candidate id " + id + "not found");
         }

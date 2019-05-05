@@ -30,7 +30,7 @@ public class Interview implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="CANDIDATE_ID")
-    private Candidate candidate;
+    private AbsCandidate candidate;
 
     public Interview() {
     }
