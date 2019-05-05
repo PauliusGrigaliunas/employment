@@ -14,8 +14,9 @@ public class Employee extends ICandidate{
     @Transactional
     public void addPosition(Position position) {
 
-        position.setName(position.getName() + "!");
+        if( !positionsList.contains(position) ){
         super.addPosition(position);
+        }
     }
 
 }

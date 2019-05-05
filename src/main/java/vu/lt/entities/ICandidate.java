@@ -57,7 +57,7 @@ public abstract class ICandidate{
 
     public void addPosition(Position position) {
         positionsList.add(position);
-        //position.getCandidatesList().add(this);
+        position.getCandidatesList().add(this);
     }
 
     public void removePosition(Position position) {
