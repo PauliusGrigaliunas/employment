@@ -2,7 +2,7 @@ package vu.lt.usecases;
 
 import lombok.Getter;
 import lombok.Setter;
-import vu.lt.entities.Candidate;
+import vu.lt.entities.Employee;
 import vu.lt.entities.ICandidate;
 import vu.lt.persistence.ICandidatesDAO;
 
@@ -19,7 +19,7 @@ public class Candidates {
     private ICandidatesDAO candidatesDAO;
 
     @Getter @Setter
-    private ICandidate candidateToCreate = (ICandidate) new  Candidate();
+    private ICandidate candidateToCreate = new Employee();
 
     @Getter
     private List<ICandidate> allCandidates;

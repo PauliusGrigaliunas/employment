@@ -36,7 +36,7 @@ public abstract class ICandidate{
 
     @ManyToMany
     @JoinTable(name="CANDIDATE_POSITION")
-    private List<Position> positionsList = new ArrayList<>();
+    protected List<Position> positionsList = new ArrayList<>();
 
     @OneToMany(mappedBy="candidate", cascade = CascadeType.ALL)
     private List<Interview> interviews = new ArrayList<>();
