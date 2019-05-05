@@ -3,6 +3,7 @@ package vu.lt.usecases;
 import lombok.Getter;
 import lombok.Setter;
 import vu.lt.entities.AbsCandidate;
+import vu.lt.entities.Candidate;
 import vu.lt.persistence.ICandidatesDAO;
 
 import javax.annotation.PostConstruct;
@@ -18,7 +19,7 @@ public class Candidates {
     private ICandidatesDAO candidatesDAO;
 
     @Getter @Setter
-    private AbsCandidate candidateToCreate; //= new Candidate();
+    private AbsCandidate candidateToCreate= new Candidate();
 
     @Getter
     private List<AbsCandidate> allCandidates;

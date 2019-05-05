@@ -3,7 +3,6 @@ package vu.lt.entities;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.enterprise.inject.Alternative;
 import javax.inject.Named;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -13,14 +12,13 @@ import java.util.Objects;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Candidate.findAll", query = "select c from Candidate as c"),
+        @NamedQuery(name = "Candidate.findAll", query = "select c from AbsCandidate as c"),
         @NamedQuery(name = "Candidate.findById", query = "select p from Position as p where p.id = :candidateId")
 })
 @Table(name = "CANDIDATE")
 @Getter
 @Setter
 @XmlRootElement
-@Alternative
 public abstract class AbsCandidate {
 
     public AbsCandidate(){ }
