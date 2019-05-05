@@ -2,6 +2,7 @@ package vu.lt.rest;
 
 import lombok.val;
 import vu.lt.entities.Candidate;
+import vu.lt.entities.ICandidate;
 import vu.lt.persistence.CandidatesDAO;
 
 import javax.annotation.Nonnull;
@@ -27,7 +28,7 @@ public class EmployeesRestServices {
 
 
     @GET
-    public List<Candidate> getAll() {
+    public List<ICandidate> getAll() {
         return candidatesDAO.loadAll();
     }
 

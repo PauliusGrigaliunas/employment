@@ -35,7 +35,7 @@ public class Position {
     private Integer optLockVersion;
 
     @ManyToMany(mappedBy = "positionsList")
-    private List<Candidate> candidatesList = new ArrayList<>();
+    private List<ICandidate> candidatesList = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {
@@ -51,12 +51,12 @@ public class Position {
         return Objects.hash(name);
     }
 
-    public void addCandidate(Candidate candidate) {
+    public void addCandidate(ICandidate candidate) {
         candidatesList.add(candidate);
         candidate.getPositionsList().add(this);
     }
 
-    public void removeCandidate(Candidate candidate) {
+    public void removeCandidate(ICandidate candidate) {
         candidatesList.remove(candidate);
         candidate.getPositionsList().remove(this);
     }
