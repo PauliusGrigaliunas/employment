@@ -1,6 +1,5 @@
 package vu.lt.persistence;
 
-import vu.lt.entities.Candidate;
 import vu.lt.entities.ICandidate;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -40,7 +39,7 @@ public class CandidatesDAO implements ICandidatesDAO {
     public void delete(ICandidate candidate){ this.em.remove(em.contains(candidate) ? candidate : this.em.merge(candidate)); }
 
     public ICandidate findOne(Integer id) {
-        return em.find(Candidate.class, id);
+        return em.find(ICandidate.class, id);
     }
 
     public void merge(ICandidate candidate) {

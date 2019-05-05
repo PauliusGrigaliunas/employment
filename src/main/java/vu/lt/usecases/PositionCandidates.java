@@ -9,13 +9,12 @@ import vu.lt.persistence.ICandidatesDAO;
 import vu.lt.persistence.PositionsDAO;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.List;
 
-//@Model
-@RequestScoped
+@Model
 public class PositionCandidates {
 
     @Inject

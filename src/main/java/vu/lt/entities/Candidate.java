@@ -6,4 +6,5 @@ import javax.persistence.Entity;
 //@Specializes
 public class Candidate extends ICandidate{
 
+
 }

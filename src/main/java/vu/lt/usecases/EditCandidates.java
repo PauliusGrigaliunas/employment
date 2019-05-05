@@ -5,7 +5,6 @@ import lombok.Setter;
 import org.hibernate.Hibernate;
 import org.omnifaces.cdi.ViewScoped;
 import org.primefaces.context.RequestContext;
-import vu.lt.entities.Candidate;
 import vu.lt.entities.ICandidate;
 import vu.lt.persistence.ICandidatesDAO;
 
@@ -42,7 +41,7 @@ public class EditCandidates implements Serializable {
         this.candidate = candidatesDAO.findOne(candidateId);
     }
 
-    public void prepareForEditing(Candidate newCandidate) {
+    public void prepareForEditing(ICandidate newCandidate) {
         candidate = newCandidate;
         conflictingCandidate = null;
     }
