@@ -13,4 +13,7 @@
     <interceptors>
         <class>vu.lt.interceptors.MethodLogger</class>
     </interceptors>
+    <decorators>
+        <class>vu.lt.decorators.PositionDecorator</class>
+    </decorators>
 </beans>
