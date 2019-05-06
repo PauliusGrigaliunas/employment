@@ -4,17 +4,18 @@ import vu.lt.entities.Interview;
 import vu.lt.interceptors.LoggedInvocation;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
+import javax.enterprise.inject.Specializes;
 
 @ApplicationScoped
-public class InterviewsDAO {
+@Specializes
+public class InterviewsCompletedDAO extends InterviewsDAO {
 
-    @Inject
-    protected EntityManager em;
-
+    @Override
     @LoggedInvocation
     public void persist(Interview interview){
+        String name = interview.getName();
+        interview.setName(name + " (completed)");
         this.em.persist(interview);
     }
+
 }
