@@ -26,6 +26,7 @@ public class CandidatesDAO implements ICandidatesDAO {
     public List<ICandidate> loadAll() {
         return em.createNamedQuery("Candidate.findAll", ICandidate.class).getResultList();
     }
+
     public ICandidate loadOne(int candidateId) {
         return em.createNamedQuery("Candidate.findById", ICandidate.class)
                 .setParameter("candidateId", candidateId)

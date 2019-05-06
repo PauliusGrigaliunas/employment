@@ -6,7 +6,6 @@ import javax.enterprise.inject.Specializes;
 import javax.persistence.Entity;
 
 @Entity
-@Specializes
 public class Employee extends ICandidate{
 
 

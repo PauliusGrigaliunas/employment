@@ -28,11 +28,13 @@ public class EmployeesRestServices {
 
 
     @GET
+    @Consumes(MediaType.APPLICATION_JSON)
     public List<ICandidate> getAll() {
         return candidatesDAO.loadAll();
     }
 
     @GET
+    @Consumes(MediaType.APPLICATION_JSON)
     @Path("/{candidateId}")
     public Candidate find(@PathParam("candidateId") Integer candidateId) {
         return em.find(Candidate.class, candidateId);
