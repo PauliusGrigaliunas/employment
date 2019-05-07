@@ -47,7 +47,7 @@ public class EditCandidates implements Serializable {
     }
 
     @Transactional
-    public void updateSelectedCandidate() {
+    public String updateSelectedCandidate() {
         try {
             candidatesDAO.updateAndFlush(candidate);
             load(candidate.getId());
@@ -58,6 +58,7 @@ public class EditCandidates implements Serializable {
             RequestContext.getCurrentInstance().addCallbackParam("validationFailed", true);
             throw new OptimisticLockException( "Optimistic lock exception");
         }
+        return "/editCandidate.xhtml?faces-redirect=true&candidateId=" + candidate.getId();
     }
     @Transactional
     public void overwriteCandidate() {
