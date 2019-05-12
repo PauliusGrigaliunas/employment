@@ -56,7 +56,8 @@ public class EditCandidates implements Serializable {
             conflictingCandidate = candidatesDAO.findOne(candidate.getId());
             Hibernate.initialize(conflictingCandidate.getPositionsList());
             RequestContext.getCurrentInstance().addCallbackParam("validationFailed", true);
-            throw new OptimisticLockException( "Optimistic lock exception");
+            //throw new OptimisticLockException( "Optimistic lock exception");
+            return "/editCandidate.xhtml?faces-redirect=true&candidateId=" + this.candidate.getId() + "&error=optimistic-lock-exception";
         }
         return "/editCandidate.xhtml?faces-redirect=true&candidateId=" + candidate.getId();
     }

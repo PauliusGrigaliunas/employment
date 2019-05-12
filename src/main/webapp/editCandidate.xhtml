@@ -22,6 +22,8 @@
         >
             <f:param name="candidateId" value="#{editCandidates.candidate.id}" />
         </h:commandButton>
+        <br/>
+        <h:outputText value="Value was already modified by other user. If you want to override it - try again" rendered="#{param['error'] == 'optimistic-lock-exception'}" />
     </h:form>
     <h:link value="Back" outcome="index?" />
 </body>

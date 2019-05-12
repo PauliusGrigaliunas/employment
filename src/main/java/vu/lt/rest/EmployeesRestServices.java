@@ -13,6 +13,7 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 @ApplicationScoped
@@ -25,8 +26,6 @@ public class EmployeesRestServices {
     private EntityManager em;
     @Inject private CandidatesDAO candidatesDAO;
 
-
-
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     public List<ICandidate> getAll() {
@@ -36,14 +35,18 @@ public class EmployeesRestServices {
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/{candidateId}")
-    public Candidate find(@PathParam("candidateId") Integer candidateId) {
-        return em.find(Candidate.class, candidateId);
+    public Response find(@PathParam("candidateId") Integer candidateId) {
+        ICandidate candidate = candidatesDAO.findOne(candidateId);
+        if (candidate == null)
+        {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        else return Response.ok(candidate).build();
     }
 
     @POST
     @Transactional
     @Path("/createNew")
-    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public String newCandidate(@Nonnull Candidate candidate) {
 
@@ -57,16 +60,19 @@ public class EmployeesRestServices {
     }
 
     @PUT
-    @Consumes("application/json")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
     @Path("/update/{id}")
-    public String add(@PathParam("id") int id, final Candidate candidate) {
+    public Response add(@PathParam("id") int id, final Candidate candidate) {
         val dbCandidate = em.find(Candidate.class, id);
         if (dbCandidate == null) {
-            throw new IllegalArgumentException("candidate id " + id + "not found");
+            return Response.status(Response.Status.NOT_FOUND).build();
+            //throw new IllegalArgumentException("candidate id " + id + "not found");
         }
-        dbCandidate.setName(candidate.getName());
-        em.merge(dbCandidate);
-        return dbCandidate.getName();
+        else {
+            dbCandidate.setName(candidate.getName());
+            em.merge(dbCandidate);
+            return Response.ok(candidate).build();
+        }
     }
 }
